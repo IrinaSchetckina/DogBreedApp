@@ -47,10 +47,6 @@ class BreedListFragment: Fragment() {
         return NavigationUI.onNavDestinationSelected(item, view!!.findNavController()) || super.onOptionsItemSelected(item)
     }
 
-    private fun updateList(newBreedList: List<Breed>) {
-        binding.refreshBreedList.isRefreshing = false
-
-    }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     fun justLog() {

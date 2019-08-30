@@ -22,20 +22,18 @@ class BreedRepository (private val database: BreedDatabase) {
 
     private val breedList: MutableLiveData<List<Breed>> =  MutableLiveData()
 
-    fun getFreshList(): MutableLiveData<List<Breed>> {
+    suspend fun getFreshList(): List<Breed>? {
 
-
-        coroutineScope.launch {
+        return withContext(Dispatchers.Main) {
+            var localData: List<Breed> = listOf()
             var result  = getDataFromNetwork()
             if (result.message.isNotEmpty()) {
-               val localData = saveData(result.message)
-                breedList.value = localData
+                localData = saveData(result.message)
+
 
             }
-
+            localData
         }
-
-        return breedList
     }
 
     private suspend fun getDataFromNetwork(): AllBreedResponse {

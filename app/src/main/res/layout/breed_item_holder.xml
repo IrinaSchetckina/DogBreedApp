@@ -5,15 +5,20 @@
         <variable
                 name="breed"
                 type="com.schetckina.dogbreedapp.model.enteties.Breed"/>
+        <variable
+                name="clickListener"
+                type="com.schetckina.dogbreedapp.breedList.OnChooseBreedListener" />
     </data>
+
     <TextView
             android:id="@+id/breed_name"
-              android:textSize="24sp"
-              android:paddingStart="16dp"
-              android:paddingEnd="16dp"
-              android:paddingTop="8dp"
-              android:paddingBottom="8dp"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              tools:text="Some breed"/>
+            android:textSize="24sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> clickListener.onChooseBreed(breed)}"
+            tools:text="Some breed"/>
 </layout>

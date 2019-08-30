@@ -20,6 +20,11 @@ class BreedListViewModel(application: Application): AndroidViewModel(application
     private val repository: BreedRepository = BreedRepository(BreedDatabase.getDatabase(application))
 
 
+    private var viewModelJob = Job()
+
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+
 
     init {
         Timber.i("create viewmodel")
@@ -32,7 +37,9 @@ class BreedListViewModel(application: Application): AndroidViewModel(application
 
     fun getFreshData(): LiveData<List<Breed>> {
         Timber.i("Update current list")
-        breedList.value = repository.getFreshList().value
+        uiScope.launch {
+            breedList.value = repository.getFreshList()
+        }
         return breedList
 
     }
