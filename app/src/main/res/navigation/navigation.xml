@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/navigation"
+            app:startDestination="@id/breedListFragment">
+
+    <fragment android:id="@+id/breedListFragment"
+              android:name="com.schetckina.dogbreedapp.breedList.BreedListFragment"
+              android:label="NavHostFragment"
+              tools:layout="@layout/breed_list_fragment">
+        <action android:id="@+id/action_breedListFragment_to_subBreedFragment" app:destination="@id/subBreedFragment"/>
+        <action android:id="@+id/action_breedListFragment_to_breedFragment" app:destination="@id/breedFragment"/>
+    </fragment>
+    <fragment android:id="@+id/subBreedFragment"
+              android:name="com.schetckina.dogbreedapp.subBreedList.SubBreedFragment"
+              android:label="fragment_sub_breed"
+              tools:layout="@layout/fragment_sub_breed">
+        <action android:id="@+id/action_subBreedFragment_to_breedFragment" app:destination="@id/breedFragment"/>
+        <argument android:name="subBreedList" app:argType="string[]"/>
+    </fragment>
+    <fragment android:id="@+id/breedFragment" android:name="com.schetckina.dogbreedapp.randomImage.RandomImageFragment"
+              android:label="fragment_breed">
+        <action android:id="@+id/action_breedFragment_to_breedImagesFragment"
+                app:destination="@id/breedImagesFragment"/>
+        <argument android:name="currentBreed" app:argType="string" app:nullable="true"/>
+    </fragment>
+    <fragment android:id="@+id/breedImagesFragment"
+              android:name="com.schetckina.dogbreedapp.breedImages.BreedImagesFragment"
+              android:label="fragment_breed_images">
+        <action android:id="@+id/action_breedImagesFragment_to_breedListFragment" app:popUpTo="@id/breedListFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment android:id="@+id/aboutMeFragment" android:name="com.schetckina.dogbreedapp.aboutMe.AboutMeFragment"
+              android:label="AboutMeFragment"/>
+</navigation>

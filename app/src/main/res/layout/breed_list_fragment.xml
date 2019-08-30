@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="SomeName" type="com.schetckina.dogbreedapp.model.enteties.Breed"/>
+    </data>
+    <LinearLayout
+            android:id="@+id/some_container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            app:navGraph="@navigation/navigation"
+            android:layout_height="match_parent">
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/refresh_breed_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/breed_list_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    </LinearLayout>
+</layout>
